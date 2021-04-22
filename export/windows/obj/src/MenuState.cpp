@@ -64,21 +64,21 @@
 
 HX_DEFINE_STACK_FRAME(_hx_pos_1f119275e66a7b90_15_new,"MenuState","new",0xe563b1c4,"MenuState.new","MenuState.hx",15,0xdfbcb22c)
 HX_LOCAL_STACK_FRAME(_hx_pos_1f119275e66a7b90_25_create,"MenuState","create",0xe57b7c18,"MenuState.create","MenuState.hx",25,0xdfbcb22c)
-HX_LOCAL_STACK_FRAME(_hx_pos_1f119275e66a7b90_48_update,"MenuState","update",0xf0719b25,"MenuState.update","MenuState.hx",48,0xdfbcb22c)
-HX_LOCAL_STACK_FRAME(_hx_pos_1f119275e66a7b90_64_createIconGrid,"MenuState","createIconGrid",0x591eab17,"MenuState.createIconGrid","MenuState.hx",64,0xdfbcb22c)
-HX_LOCAL_STACK_FRAME(_hx_pos_1f119275e66a7b90_102_checkDesc,"MenuState","checkDesc",0xcc572b9d,"MenuState.checkDesc","MenuState.hx",102,0xdfbcb22c)
+HX_LOCAL_STACK_FRAME(_hx_pos_1f119275e66a7b90_53_update,"MenuState","update",0xf0719b25,"MenuState.update","MenuState.hx",53,0xdfbcb22c)
+HX_LOCAL_STACK_FRAME(_hx_pos_1f119275e66a7b90_69_createIconGrid,"MenuState","createIconGrid",0x591eab17,"MenuState.createIconGrid","MenuState.hx",69,0xdfbcb22c)
+HX_LOCAL_STACK_FRAME(_hx_pos_1f119275e66a7b90_107_checkDesc,"MenuState","checkDesc",0xcc572b9d,"MenuState.checkDesc","MenuState.hx",107,0xdfbcb22c)
 
 void MenuState_obj::__construct( ::Dynamic MaxSize){
             	HX_STACKFRAME(&_hx_pos_1f119275e66a7b90_15_new)
-HXLINE(  61)		::String library = null();
-HXDLIN(  61)		this->characterDescriptionList = ::CoolUtil_obj::coolTextFile(::Paths_obj::getPath(((HX_("data/",c5,0e,88,d4) + HX_("characterInfo",b7,c8,a7,3e)) + HX_(".txt",02,3f,c0,1e)),HX_("TEXT",ad,94,ba,37),library));
-HXLINE(  60)		this->characterList = ::CoolUtil_obj::coolTextFile(HX_("assets/data/characters.txt",65,a7,26,9f));
-HXLINE(  59)		this->characters = ::Array_obj< Float >::__new(0);
-HXLINE(  58)		this->chrSprites = ::Array_obj< ::Dynamic>::__new(0);
-HXLINE(  56)		this->curColumn = ((Float)0);
-HXLINE(  55)		this->curRow = ((Float)0);
-HXLINE(  54)		this->rowsGrid = ((Float)5);
-HXLINE(  53)		this->columnsGrid = ((Float)5);
+HXLINE(  66)		::String library = null();
+HXDLIN(  66)		this->characterDescriptionList = ::CoolUtil_obj::coolTextFile(::Paths_obj::getPath(((HX_("data/",c5,0e,88,d4) + HX_("characterInfo",b7,c8,a7,3e)) + HX_(".txt",02,3f,c0,1e)),HX_("TEXT",ad,94,ba,37),library));
+HXLINE(  65)		this->characterList = ::CoolUtil_obj::coolTextFile(HX_("assets/data/characters.txt",65,a7,26,9f));
+HXLINE(  64)		this->characters = ::Array_obj< Float >::__new(0);
+HXLINE(  63)		this->chrSprites = ::Array_obj< ::Dynamic>::__new(0);
+HXLINE(  61)		this->curColumn = ((Float)0);
+HXLINE(  60)		this->curRow = ((Float)0);
+HXLINE(  59)		this->rowsGrid = ((Float)5);
+HXLINE(  58)		this->columnsGrid = ((Float)8);
 HXLINE(  20)		this->animatronicSelected = false;
 HXLINE(  15)		super::__construct(MaxSize);
             	}
@@ -109,70 +109,74 @@ bool MenuState_obj::_hx_isInstanceOf(int inClassId) {
 void MenuState_obj::create(){
             	HX_GC_STACKFRAME(&_hx_pos_1f119275e66a7b90_25_create)
 HXLINE(  26)		this->super::create();
-HXLINE(  27)		this->createIconGrid();
-HXLINE(  29)		this->goBTN =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,null(),null(),null());
-HXLINE(  30)		 ::flixel::FlxSprite _hx_tmp = this->goBTN;
-HXDLIN(  30)		::String library = null();
-HXDLIN(  30)		_hx_tmp->loadGraphic(::Paths_obj::getPath(((HX_("images/",77,50,74,c1) + HX_("ui/mainMenu/go_deselected",57,69,4a,6b)) + HX_(".png",3b,2d,bd,1e)),HX_("IMAGE",3b,57,57,3b),library),null(),null(),null(),null(),null());
-HXLINE(  31)		this->goBTN->setGraphicSize(200,0);
-HXLINE(  32)		this->goBTN->set_x(( (Float)(1050) ));
-HXLINE(  33)		this->goBTN->set_y(( (Float)(490) ));
-HXLINE(  34)		this->add(this->goBTN);
-HXLINE(  36)		this->infoBox =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,2000,2000,null());
-HXLINE(  37)		 ::flixel::FlxSprite _hx_tmp1 = this->infoBox;
-HXDLIN(  37)		::String library1 = null();
-HXDLIN(  37)		_hx_tmp1->loadGraphic(::Paths_obj::getPath(((HX_("images/",77,50,74,c1) + HX_("ui/mainMenu/infoBox",c1,65,4c,2e)) + HX_(".png",3b,2d,bd,1e)),HX_("IMAGE",3b,57,57,3b),library1),null(),null(),null(),null(),null());
-HXLINE(  38)		this->add(this->infoBox);
-HXLINE(  40)		this->info =  ::flixel::text::FlxText_obj::__alloc( HX_CTX ,(this->infoBox->x + 4),(this->infoBox->y + 2),316,HX_("Animatronic: Info",bb,b5,f0,cd),10,false);
-HXLINE(  41)		this->info->set_x((this->infoBox->x + 4));
-HXLINE(  42)		this->info->set_y((this->infoBox->y + 2));
-HXLINE(  43)		this->info->set_color(-1);
-HXLINE(  44)		this->add(this->info);
+HXLINE(  28)		 ::flixel::FlxSprite bg =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,0,0,null());
+HXLINE(  29)		::String library = null();
+HXDLIN(  29)		bg->loadGraphic(::Paths_obj::getPath(((HX_("images/",77,50,74,c1) + HX_("ui/mainMenu/OSCN_BG",f9,19,bb,ec)) + HX_(".png",3b,2d,bd,1e)),HX_("IMAGE",3b,57,57,3b),library),null(),null(),null(),null(),null());
+HXLINE(  30)		this->add(bg);
+HXLINE(  32)		this->createIconGrid();
+HXLINE(  34)		this->goBTN =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,null(),null(),null());
+HXLINE(  35)		 ::flixel::FlxSprite _hx_tmp = this->goBTN;
+HXDLIN(  35)		::String library1 = null();
+HXDLIN(  35)		_hx_tmp->loadGraphic(::Paths_obj::getPath(((HX_("images/",77,50,74,c1) + HX_("ui/mainMenu/go_deselected",57,69,4a,6b)) + HX_(".png",3b,2d,bd,1e)),HX_("IMAGE",3b,57,57,3b),library1),null(),null(),null(),null(),null());
+HXLINE(  36)		this->goBTN->setGraphicSize(200,0);
+HXLINE(  37)		this->goBTN->set_x(( (Float)(1050) ));
+HXLINE(  38)		this->goBTN->set_y(( (Float)(490) ));
+HXLINE(  39)		this->add(this->goBTN);
+HXLINE(  41)		this->infoBox =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,2000,2000,null());
+HXLINE(  42)		 ::flixel::FlxSprite _hx_tmp1 = this->infoBox;
+HXDLIN(  42)		::String library2 = null();
+HXDLIN(  42)		_hx_tmp1->loadGraphic(::Paths_obj::getPath(((HX_("images/",77,50,74,c1) + HX_("ui/mainMenu/infoBox",c1,65,4c,2e)) + HX_(".png",3b,2d,bd,1e)),HX_("IMAGE",3b,57,57,3b),library2),null(),null(),null(),null(),null());
+HXLINE(  43)		this->add(this->infoBox);
+HXLINE(  45)		this->info =  ::flixel::text::FlxText_obj::__alloc( HX_CTX ,(this->infoBox->x + 4),(this->infoBox->y + 2),316,HX_("Animatronic: Info",bb,b5,f0,cd),10,false);
+HXLINE(  46)		this->info->set_x((this->infoBox->x + 4));
+HXLINE(  47)		this->info->set_y((this->infoBox->y + 2));
+HXLINE(  48)		this->info->set_color(-1);
+HXLINE(  49)		this->add(this->info);
             	}
 
 
 void MenuState_obj::update(Float elapsed){
-            	HX_STACKFRAME(&_hx_pos_1f119275e66a7b90_48_update)
-HXLINE(  49)		this->super::update(elapsed);
-HXLINE(  50)		this->checkDesc();
+            	HX_STACKFRAME(&_hx_pos_1f119275e66a7b90_53_update)
+HXLINE(  54)		this->super::update(elapsed);
+HXLINE(  55)		this->checkDesc();
             	}
 
 
 void MenuState_obj::createIconGrid(){
-            	HX_GC_STACKFRAME(&_hx_pos_1f119275e66a7b90_64_createIconGrid)
-HXLINE(  66)		{
-HXLINE(  66)			int _g = 0;
-HXDLIN(  66)			::Array< ::String > _g1 = this->characterList;
-HXDLIN(  66)			while((_g < _g1->length)){
-HXLINE(  66)				::String character = _g1->__get(_g);
-HXDLIN(  66)				_g = (_g + 1);
-HXLINE(  68)				::Array< Float > _hx_tmp = this->characters;
-HXDLIN(  68)				_hx_tmp->push(this->characterList->indexOf(character,0));
-HXLINE(  69)				::Array< ::Dynamic> _hx_tmp1 = this->chrSprites;
-HXDLIN(  69)				_hx_tmp1->push( ::Icon_obj::__alloc( HX_CTX ,character,this->curColumn,this->curRow));
-HXLINE(  71)				::haxe::Log_obj::trace((character + HX_(" Loaded!",3c,28,8f,fc)),::hx::SourceInfo(HX_("source/MenuState.hx",20,5f,da,e4),71,HX_("MenuState",d2,bf,b6,c0),HX_("createIconGrid",fb,19,ae,c3)));
+            	HX_GC_STACKFRAME(&_hx_pos_1f119275e66a7b90_69_createIconGrid)
+HXLINE(  71)		{
+HXLINE(  71)			int _g = 0;
+HXDLIN(  71)			::Array< ::String > _g1 = this->characterList;
+HXDLIN(  71)			while((_g < _g1->length)){
+HXLINE(  71)				::String character = _g1->__get(_g);
+HXDLIN(  71)				_g = (_g + 1);
+HXLINE(  73)				::Array< Float > _hx_tmp = this->characters;
+HXDLIN(  73)				_hx_tmp->push(this->characterList->indexOf(character,0));
+HXLINE(  74)				::Array< ::Dynamic> _hx_tmp1 = this->chrSprites;
+HXDLIN(  74)				_hx_tmp1->push( ::Icon_obj::__alloc( HX_CTX ,character,this->curColumn,this->curRow));
+HXLINE(  76)				::haxe::Log_obj::trace((character + HX_(" Loaded!",3c,28,8f,fc)),::hx::SourceInfo(HX_("source/MenuState.hx",20,5f,da,e4),76,HX_("MenuState",d2,bf,b6,c0),HX_("createIconGrid",fb,19,ae,c3)));
             			}
             		}
-HXLINE(  75)		{
-HXLINE(  75)			int _g2 = 0;
-HXDLIN(  75)			int _g3 = this->characters->length;
-HXDLIN(  75)			while((_g2 < _g3)){
-HXLINE(  75)				_g2 = (_g2 + 1);
-HXDLIN(  75)				int i = (_g2 - 1);
-HXLINE(  77)				if ((this->curColumn > this->columnsGrid)) {
-HXLINE(  79)					this->curColumn = ( (Float)(0) );
-HXLINE(  80)					this->curRow++;
+HXLINE(  80)		{
+HXLINE(  80)			int _g2 = 0;
+HXDLIN(  80)			int _g3 = this->characters->length;
+HXDLIN(  80)			while((_g2 < _g3)){
+HXLINE(  80)				_g2 = (_g2 + 1);
+HXDLIN(  80)				int i = (_g2 - 1);
+HXLINE(  82)				if ((this->curColumn > this->columnsGrid)) {
+HXLINE(  84)					this->curColumn = ( (Float)(0) );
+HXLINE(  85)					this->curRow++;
             				}
-HXLINE(  84)				this->chrSprites->__get(i).StaticCast<  ::Icon >()->set_x((5 + (( (Float)(100) ) * this->curColumn)));
-HXLINE(  85)				this->chrSprites->__get(i).StaticCast<  ::Icon >()->set_y((5 + (( (Float)(150) ) * this->curRow)));
-HXLINE(  88)				this->iconSprite =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,(5 + (( (Float)(100) ) * this->curColumn)),(5 + (( (Float)(150) ) * this->curRow)),null());
-HXLINE(  89)				this->iconSprite->loadGraphic(HX_("assets/images/IconOverlay.png",67,72,38,bf),null(),null(),null(),null(),null());
-HXLINE(  90)				this->iconSprite->setGraphicSize(100,150);
-HXLINE(  91)				this->iconSprite->set_antialiasing(true);
-HXLINE(  93)				this->add(this->chrSprites->__get(i).StaticCast<  ::Icon >());
-HXLINE(  94)				this->add(this->iconSprite);
-HXLINE(  95)				::haxe::Log_obj::trace(i,::hx::SourceInfo(HX_("source/MenuState.hx",20,5f,da,e4),95,HX_("MenuState",d2,bf,b6,c0),HX_("createIconGrid",fb,19,ae,c3)));
-HXLINE(  97)				this->curColumn++;
+HXLINE(  89)				this->chrSprites->__get(i).StaticCast<  ::Icon >()->set_x((5 + (( (Float)(100) ) * this->curColumn)));
+HXLINE(  90)				this->chrSprites->__get(i).StaticCast<  ::Icon >()->set_y((5 + (( (Float)(150) ) * this->curRow)));
+HXLINE(  93)				this->iconSprite =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,(5 + (( (Float)(100) ) * this->curColumn)),(5 + (( (Float)(150) ) * this->curRow)),null());
+HXLINE(  94)				this->iconSprite->loadGraphic(HX_("assets/images/IconOverlay.png",67,72,38,bf),null(),null(),null(),null(),null());
+HXLINE(  95)				this->iconSprite->setGraphicSize(100,150);
+HXLINE(  96)				this->iconSprite->set_antialiasing(true);
+HXLINE(  98)				this->add(this->chrSprites->__get(i).StaticCast<  ::Icon >());
+HXLINE(  99)				this->add(this->iconSprite);
+HXLINE( 100)				::haxe::Log_obj::trace(i,::hx::SourceInfo(HX_("source/MenuState.hx",20,5f,da,e4),100,HX_("MenuState",d2,bf,b6,c0),HX_("createIconGrid",fb,19,ae,c3)));
+HXLINE( 102)				this->curColumn++;
             			}
             		}
             	}
@@ -181,20 +185,20 @@ HXLINE(  97)				this->curColumn++;
 HX_DEFINE_DYNAMIC_FUNC0(MenuState_obj,createIconGrid,(void))
 
 void MenuState_obj::checkDesc(){
-            	HX_STACKFRAME(&_hx_pos_1f119275e66a7b90_102_checkDesc)
-HXLINE( 103)		this->info->set_x((this->infoBox->x + 4));
-HXLINE( 104)		this->info->set_y((this->infoBox->y + 2));
-HXLINE( 106)		if ((::flixel::FlxG_obj::mouse->_leftButton->current == 2)) {
-HXLINE( 108)			int _g = 0;
-HXDLIN( 108)			::Array< ::Dynamic> _g1 = this->chrSprites;
-HXDLIN( 108)			while((_g < _g1->length)){
-HXLINE( 108)				 ::Icon chrSprite = _g1->__get(_g).StaticCast<  ::Icon >();
-HXDLIN( 108)				_g = (_g + 1);
-HXLINE( 110)				if (::flixel::FlxG_obj::mouse->overlaps(chrSprite,null())) {
-HXLINE( 112)					chrSprite->SetDesc();
-HXLINE( 113)					this->infoBox->set_x((chrSprite->x + 100));
-HXLINE( 114)					this->infoBox->set_y((chrSprite->y + 150));
-HXLINE( 115)					this->info->set_text(chrSprite->desc);
+            	HX_STACKFRAME(&_hx_pos_1f119275e66a7b90_107_checkDesc)
+HXLINE( 108)		this->info->set_x((this->infoBox->x + 4));
+HXLINE( 109)		this->info->set_y((this->infoBox->y + 2));
+HXLINE( 111)		if ((::flixel::FlxG_obj::mouse->_leftButton->current == 2)) {
+HXLINE( 113)			int _g = 0;
+HXDLIN( 113)			::Array< ::Dynamic> _g1 = this->chrSprites;
+HXDLIN( 113)			while((_g < _g1->length)){
+HXLINE( 113)				 ::Icon chrSprite = _g1->__get(_g).StaticCast<  ::Icon >();
+HXDLIN( 113)				_g = (_g + 1);
+HXLINE( 115)				if (::flixel::FlxG_obj::mouse->overlaps(chrSprite,null())) {
+HXLINE( 117)					chrSprite->SetDesc();
+HXLINE( 118)					this->infoBox->set_x((chrSprite->x + 100));
+HXLINE( 119)					this->infoBox->set_y((chrSprite->y + 150));
+HXLINE( 120)					this->info->set_text(chrSprite->desc);
             				}
             			}
             		}
