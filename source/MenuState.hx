@@ -24,6 +24,11 @@ class MenuState extends FlxState
 	override public function create()
 	{
 		super.create();
+
+		var bg:FlxSprite = new FlxSprite(0, 0);
+		bg.loadGraphic(Paths.image("ui/mainMenu/OSCN_BG"));
+		add(bg);
+
 		createIconGrid();
 
 		goBTN = new FlxSprite();
@@ -50,7 +55,7 @@ class MenuState extends FlxState
 		checkDesc();
 	}
 
-	var columnsGrid:Float = 5;
+	var columnsGrid:Float = 8;
 	var rowsGrid:Float = 5;
 	var curRow:Float = 0;
 	var curColumn:Float = 0;
